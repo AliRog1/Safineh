@@ -1,0 +1,227 @@
+:global(:root) {
+  --bg-main: #0b1120;
+  --bg-card: rgba(15, 23, 42, 0.78);
+  --bg-card-strong: #111827;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-soft: rgba(148, 163, 184, 0.2);
+  --border-strong: rgba(148, 163, 184, 0.35);
+  --neon-blue: #00d2ff;
+  --danger: #ef4444;
+  --danger-soft: rgba(239, 68, 68, 0.12);
+  --success: #22c55e;
+  --shadow-soft: 0 12px 30px rgba(2, 6, 23, 0.22);
+}
+
+:global([data-theme='light']) {
+  --bg-main: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.82);
+  --bg-card-strong: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-soft: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.16);
+  --neon-blue: #0ea5e9;
+  --danger: #dc2626;
+  --danger-soft: rgba(220, 38, 38, 0.1);
+  --success: #16a34a;
+  --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+:global([data-theme='dark']) {
+  --bg-main: #0b1120;
+  --bg-card: rgba(15, 23, 42, 0.78);
+  --bg-card-strong: #111827;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-soft: rgba(148, 163, 184, 0.2);
+  --border-strong: rgba(148, 163, 184, 0.35);
+  --neon-blue: #00d2ff;
+  --danger: #ef4444;
+  --danger-soft: rgba(239, 68, 68, 0.12);
+  --success: #22c55e;
+  --shadow-soft: 0 12px 30px rgba(2, 6, 23, 0.22);
+}
+
+.container {
+  padding: 24px;
+  color: var(--text-main);
+  direction: rtl;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.pageHeader h1 {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.tableCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.searchInput {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  background: var(--bg-card-strong);
+  color: var(--text-main);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+.searchInput:focus {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.14);
+}
+
+.addBtn {
+  height: 42px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--neon-blue), #4f46e5);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.addBtn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.28);
+}
+
+.addBtn:active {
+  transform: translateY(0);
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text-main);
+}
+
+.userTable thead th {
+  padding: 16px;
+  background: rgba(14, 165, 233, 0.1);
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 800;
+  text-align: right;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.userTable tbody td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 14px;
+}
+
+.userTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.userTable tbody tr:hover {
+  background: rgba(148, 163, 184, 0.05);
+}
+
+.formRow {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 20px;
+}
+
+.inputWrap {
+  flex: 1;
+}
+
+.errorText {
+  margin: 6px 0 0;
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.actionsHeader {
+  width: 150px;
+  text-align: center;
+}
+
+.centerCell {
+  text-align: center;
+}
+
+.emptyRow {
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.deleteBtn {
+  border: none;
+  background: transparent;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 10px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.deleteBtn:hover {
+  background: var(--danger-soft);
+  transform: translateY(-1px);
+}
+
+.deleteBtn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .formRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .addBtn {
+    width: 100%;
+  }
+
+  .pageHeader h1 {
+    font-size: 20px;
+  }
+
+  .userTable thead th,
+  .userTable tbody td {
+    padding: 12px;
+    font-size: 13px;
+  }
+}

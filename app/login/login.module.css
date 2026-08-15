@@ -1,0 +1,173 @@
+    .bodyWrapper {
+  background: #0f172a;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* افکت نئونی انیمیشنی پس‌زمینه */
+.bodyWrapper::before,
+.bodyWrapper::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 1;
+  opacity: 0.15;
+  animation: pulse 10s infinite alternate;
+  pointer-events: none;
+}
+
+.bodyWrapper::before {
+  background: #6366f1;
+  top: -10%;
+  left: -10%;
+}
+
+.bodyWrapper::after {
+  background: #a855f7;
+  bottom: -10%;
+  right: -10%;
+  animation-delay: -5s;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.2) translate(10%, 10%);
+  }
+}
+
+.loginBox {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 45px;
+  border-radius: 32px;
+  width: 90%;
+  max-width: 440px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+  animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 10;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 600;
+  background: linear-gradient(to left, #fff, #00e5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.loginSubtitle {
+  color: #94a3b8;
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 0.95rem;
+}
+
+.formGroup {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  padding-right: 5px;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  color: white;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+.togglePassword {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.togglePassword:hover {
+  color: #00e5ff;
+}
+
+.input:focus,
+.select:focus {
+  border-color: #00e5ff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+}
+
+.select option {
+  background: #1e293b;
+  color: white;
+}
+
+.btnPrimary {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.4s;
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.5);
+  filter: brightness(1.1);
+}
+
+.btnPrimary:active {
+  transform: translateY(0) scale(0.98);
+}

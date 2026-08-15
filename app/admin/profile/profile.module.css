@@ -1,0 +1,202 @@
+/* متغیرهای رنگی برای مدیریت هوشمند لایت و دارک مود */
+.container {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-card: #ffffff;
+  --bg-page: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --input-bg: #ffffff;
+  
+  max-width: 850px;
+  margin: 60px auto;
+  padding: 0 20px;
+  direction: rtl;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* حالت دارک */
+:global([data-theme='dark']) .container {
+  --bg-card: #111827;
+  --bg-page: #030712;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-color: #374151;
+  --input-bg: #1f2937;
+}
+
+.profileCard {
+  background: var(--bg-card);
+  border-radius: 32px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 20px 40px -5px rgba(0, 0, 0, 0.05); /* سایه چندلایه برای عمق بیشتر */
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.headerBanner {
+  height: 160px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  position: relative;
+}
+
+/* آواتار به سبک Squircle مدرن */
+.avatarWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -65px;
+  position: relative;
+  z-index: 10;
+}
+
+.avatarSquare {
+  width: 130px;
+  height: 130px;
+  background: var(--bg-card);
+  border-radius: 42px; /* افکت Squircle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.8rem;
+  font-weight: 900;
+  color: var(--primary);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border: 6px solid var(--bg-card);
+}
+
+.infoSection {
+  text-align: center;
+  margin: 15px 0 35px 0;
+}
+
+.userName {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.userBadge {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  padding: 6px 18px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 10px;
+  display: inline-block;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  padding: 0 45px 45px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-right: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--border-color);
+  background: var(--input-bg);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  background: var(--bg-card);
+}
+
+/* فیلدهای غیرقابل ویرایش (Read-only) */
+.readOnlyInput {
+  background: var(--bg-page) !important;
+  color: var(--text-muted) !important;
+  border: 2px dashed var(--border-color) !important;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* بخش استان‌ها */
+.provinceBox {
+  grid-column: span 2;
+  background: var(--bg-page);
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.provinceIcon {
+  background: var(--primary);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.provinceText {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.submitBtn {
+  grid-column: span 2;
+  background: var(--primary);
+  color: white;
+  padding: 18px;
+  border-radius: 20px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+  margin-top: 10px;
+}
+
+.submitBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+}
+
+@media (max-width: 768px) {
+  .formGrid { grid-template-columns: 1fr; padding: 0 25px 30px; }
+  .container { margin: 20px auto; }
+}

@@ -1,0 +1,402 @@
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: rgba(15, 23, 42, 0.06);
+  --primary: #3b82f6;
+  --primary-2: #2563eb;
+  --shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  --radius: 16px;
+}
+
+.dark {
+  --bg: #090d16;
+  --surface: #131c2e;
+  --surface-2: #1e293b;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.06);
+  --primary: #60a5fa;
+  --primary-2: #3b82f6;
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.news-page,
+.news-detail-page {
+  min-height: 100vh;
+  background: 
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 35%),
+    radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.05), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  padding: 40px 20px;
+  font-family: inherit;
+}
+
+/* هیرو و ابزارها */
+.news-hero {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+}
+
+.news-hero__content,
+.news-hero__panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.news-kicker {
+  align-self: flex-start;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-2);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.news-hero h1 {
+  margin: 0 0 12px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.news-hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* بخش تب‌ها و جستجو */
+.news-hero__panel {
+  gap: 20px;
+}
+
+.news-tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--surface-2);
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.news-tabs .news-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.news-tabs .news-btn.active {
+  background: var(--surface);
+  color: var(--primary-2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-weight: 700;
+}
+
+.news-search {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.news-search span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.news-search input {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  outline: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.news-search input:focus {
+  border-color: var(--primary);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* گرید کارت‌ها */
+.news-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+/* کارت خبر و رفع مشکل تصویر */
+.news-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15);
+}
+
+/* اصلاح نمایش کامل تصویر بدون کشیدگی و سایز نامناسب */
+.news-card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--surface-2);
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.news-card__image img,
+.news-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* تغییر از cover به contain برای نمایش کامل و عدم کشیدگی تصویر */
+  background: #00000008;
+  display: block;
+}
+
+.news-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.news-card__body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-card__meta,
+.news-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.news-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge-news {
+  background: rgba(234, 179, 8, 0.1);
+  color: #b45309;
+}
+
+.badge-article {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-2);
+}
+
+.news-card__title {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 755;
+  line-height: 1.6;
+}
+
+.news-card__title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.news-card__title a:hover {
+  color: var(--primary-2);
+}
+
+.news-card__excerpt {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 72px; /* فیکس کردن فضای خالی متن خلاصه */
+}
+
+.news-card__footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.news-date {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.news-card .news-btn {
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.news-card .news-btn:hover {
+  background: var(--primary-2);
+}
+
+/* صفحه جزئیات خبر */
+.news-detail-shell {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.news-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: color 0.2s ease;
+}
+
+.news-back-link:hover {
+  color: var(--text);
+}
+
+.news-detail-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.news-detail-image {
+  width: 100%;
+  max-height: 450px;
+  background: #1e293b08;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.news-detail-image img {
+  max-height: 450px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain; /* جلوگیری از برش خوردن عکس در صفحه جزئیات */
+}
+
+.news-detail-content {
+  padding: 32px;
+}
+
+.news-detail-content h1 {
+  margin: 16px 0;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.news-detail-text {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--text);
+  opacity: 0.9;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+/* حالت خالی و خطا */
+.news-empty,
+.news-not-found,
+.news-loading {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 48px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ریسپانسیو */
+@media (max-width: 1024px) {
+  .news-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-page,
+  .news-detail-page {
+    padding: 24px 12px;
+  }
+  
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-hero__content,
+  .news-hero__panel,
+  .news-detail-content {
+    padding: 24px;
+  }
+
+  .news-tabs {
+    flex-direction: column;
+  }
+}

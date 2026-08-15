@@ -1,0 +1,595 @@
+/* ==========================================================================
+   تنظیمات پایه و متغیرهای تم (Light & Dark Mode)
+   ========================================================================== */
+
+.container {
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  direction: rtl;
+  font-family: inherit;
+
+  /* متغیرهای رنگی اختصاصی لایت‌مود */
+  --local-bg-card: var(--bg-card, #ffffff);
+  --local-border-card: var(--border-card, #e2e8f0);
+  --local-bg-input: var(--bg-input, #f8fafc);
+  --local-border-input: var(--border-input, #cbd5e1);
+  --local-text-primary: var(--text-primary, #0f172a);
+  --local-text-secondary: var(--text-secondary, #64748b);
+  --local-bg-badge: var(--bg-badge, #f1f5f9);
+  --local-text-badge: var(--text-badge, #334155);
+  --local-bg-icon-wrapper: var(--bg-icon-wrapper, #ecfdf5);
+  --local-text-accent: #10b981;
+
+  --local-bg-readonly: var(--bg-readonly, #f1f5f9);
+  --local-border-readonly: var(--border-readonly, #e2e8f0);
+  --local-text-label: var(--text-label, #475569);
+  --local-border-section: var(--border-section, #f1f5f9);
+}
+
+/* اعمال متغیرها در حالت دارک‌مود */
+:global([data-theme="dark"]) .container,
+:global(.dark) .container {
+  --local-bg-card: var(--bg-card, #1e293b);
+  --local-border-card: var(--border-card, #334155);
+  --local-bg-input: var(--bg-input, #0f172a);
+  --local-border-input: var(--border-input, #334155);
+  --local-text-primary: var(--text-primary, #f8fafc);
+  --local-text-secondary: var(--text-secondary, #94a3b8);
+  --local-bg-badge: var(--bg-badge, #334155);
+  --local-text-badge: var(--text-badge, #e2e8f0);
+  --local-bg-icon-wrapper: var(--bg-icon-wrapper, rgba(16, 185, 129, 0.15));
+
+  --local-bg-readonly: var(--bg-readonly, #0f172a);
+  --local-border-readonly: var(--border-readonly, #1e293b);
+  --local-text-label: var(--text-label, #94a3b8);
+  --local-border-section: var(--border-section, #334155);
+}
+
+/* ==========================================================================
+   کارت اصلی و هدر صفحه
+   ========================================================================== */
+
+.card {
+  background-color: var(--local-bg-card);
+  border: 1px solid var(--local-border-card);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--local-border-card);
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon {
+  font-size: 2rem;
+  background-color: var(--local-bg-icon-wrapper);
+  padding: 0.6rem 0.8rem;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--local-text-primary);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--local-text-secondary);
+  margin-top: 0.25rem;
+}
+
+.countBadge {
+  background-color: var(--local-text-accent);
+  color: #ffffff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.addBtn {
+  background-color: #10b981;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.addBtn:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* ==========================================================================
+   باکس جستجو
+   ========================================================================== */
+
+.searchBox {
+  margin-bottom: 1.75rem;
+}
+
+.searchInput {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--local-bg-input);
+  border: 1px solid var(--local-border-input);
+  border-radius: 14px;
+  padding: 0.85rem 1.25rem;
+  color: var(--local-text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.searchInput:focus {
+  border-color: var(--local-text-accent);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  background-color: var(--local-bg-card);
+}
+
+/* ==========================================================================
+   شبکه کارت‌های دانش‌آموزان (Grid Layout)
+   ========================================================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.studentCard {
+  background-color: var(--local-bg-card);
+  border: 1px solid var(--local-border-card);
+  border-radius: 18px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all 0.25s ease;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.studentCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* کارت غیرفعال */
+.deactivatedCard {
+  opacity: 0.7;
+  border: 1px dashed #ef4444 !important;
+  background-color: var(--local-bg-readonly) !important;
+}
+
+/* هدر درون کارت دانش‌آموز */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--local-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.deactivatedLabel {
+  font-size: 0.7rem;
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: var(--local-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* تگ‌ها (استان و پایه) */
+.tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: var(--local-bg-badge);
+  color: var(--local-text-badge);
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.gradeTag {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  color: #2563eb !important;
+}
+
+.provinceTag {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  color: #059669 !important;
+}
+
+/* دکمه‌های عملیاتی درون کارت */
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--local-border-section);
+  width: 100%;
+}
+
+.viewBtn,
+.deactivateBtn,
+.activateBtn {
+  flex: 1;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.viewBtn {
+  background-color: rgba(59, 130, 246, 0.08);
+  color: #2563eb;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.viewBtn:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.deactivateBtn {
+  background-color: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.deactivateBtn:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.activateBtn {
+  background-color: rgba(16, 185, 129, 0.08);
+  color: #059669;
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.activateBtn:hover {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+/* وضعیت خالی / در حال بارگذاری */
+.emptyState {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  color: var(--local-text-secondary);
+  background-color: var(--local-bg-input);
+  border: 2px dashed var(--local-border-card);
+  border-radius: 18px;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.emptyText {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--local-text-primary);
+}
+
+.loadingText {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--local-text-secondary);
+  padding: 5rem 0;
+}
+
+/* ==========================================================================
+   سیستم مودال (Popup)
+   ========================================================================== */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+  padding: 1rem;
+}
+
+.modalContent {
+  background-color: var(--local-bg-card);
+  border: 1px solid var(--local-border-card);
+  width: 100%;
+  max-width: 520px;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.25s ease-out;
+  direction: rtl;
+  color: var(--local-text-primary);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--local-border-section);
+  padding-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.modalHeader h2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.closeModalBtn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--local-text-secondary);
+  line-height: 1;
+  padding: 0.2rem;
+  border-radius: 8px;
+  transition: color 0.2s ease;
+}
+
+.closeModalBtn:hover {
+  color: #ef4444;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--local-border-section);
+}
+
+.modalFooter {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--local-border-section);
+  padding-top: 1rem;
+}
+
+.editBtn,
+.saveBtn {
+  flex: 1;
+  padding: 0.7rem;
+  background-color: #10b981;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.saveBtn:hover,
+.editBtn:hover {
+  background-color: #059669;
+}
+
+.cancelBtn {
+  flex: 1;
+  padding: 0.7rem;
+  background-color: var(--local-bg-readonly);
+  color: var(--local-text-secondary);
+  border: 1px solid var(--local-border-readonly);
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelBtn:hover {
+  background-color: var(--local-border-input);
+}
+
+/* فرم ویرایش مودال */
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.inputGroup label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--local-text-label);
+  width: 120px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.inputGroup input,
+.selectDropdown {
+  flex-grow: 1;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--local-border-input);
+  background-color: var(--local-bg-input);
+  color: var(--local-text-primary);
+  outline: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.selectDropdown {
+  cursor: pointer;
+}
+
+.inputGroup input:focus,
+.selectDropdown:focus {
+  border-color: var(--local-text-accent);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+}
+
+/* چیپس‌ها برای استان‌ها */
+.chipsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  flex-grow: 1;
+}
+
+.chip {
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  border: 1px solid var(--local-border-input);
+  background-color: var(--local-bg-input);
+  color: var(--local-text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  border-color: var(--local-text-accent);
+  color: var(--local-text-primary);
+}
+
+.chipSelected {
+  background-color: var(--local-text-accent) !important;
+  color: #ffffff !important;
+  border-color: var(--local-text-accent) !important;
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* واکنش‌گرایی موبایل */
+@media (max-width: 576px) {
+  .card {
+    padding: 1.25rem;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .inputGroup label {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

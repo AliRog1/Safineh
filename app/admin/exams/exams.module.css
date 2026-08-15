@@ -1,0 +1,446 @@
+/* ====================================
+   CONTAINER & HEADER
+   ==================================== */
+.container {
+  padding: 2rem;
+  color: var(--text-main);
+  direction: rtl;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--text-main) 0%, var(--neon-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.newBtn {
+  background: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 100%);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.35);
+  transition: all 0.2s ease;
+}
+
+.newBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(168, 85, 247, 0.5);
+}
+
+/* ====================================
+   MODAL & OVERLAY
+   ==================================== */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modalContent {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  padding: 2rem;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 850px;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.modalContent h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 0.75rem;
+}
+
+/* اسکرول بار زیبا برای مدال */
+.modalContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 10px;
+}
+
+/* ====================================
+   FORM ELEMENTS
+   ==================================== */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  background: var(--bg-main);
+  border: 1px solid var(--border-soft);
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: var(--neon-purple);
+  background: var(--bg-card);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+/* هماهنگی اینپوت‌های تاریخ و انتخابگر در تم */
+.input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: var(--calendar-filter, invert(1));
+  cursor: pointer;
+}
+
+select.input option {
+  background: var(--bg-card-strong);
+  color: var(--text-main);
+}
+
+/* ====================================
+   QUESTION BUILDER
+   ==================================== */
+.questionBuilder {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 1.5rem;
+}
+
+.questionBuilder h3 {
+  font-size: 1.1rem;
+  color: var(--neon-purple);
+  margin-bottom: 1rem;
+}
+
+.qCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.qHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.qTitleInput {
+  flex: 1;
+}
+
+.pointsInput {
+  width: 100px !important;
+  text-align: center;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.optionInput {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-main);
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+}
+
+.radioInput {
+  accent-color: var(--neon-purple);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.deleteQBtn {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.24);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.deleteQBtn:hover {
+  background: rgba(239, 68, 68, 0.22);
+}
+
+.addQBtn {
+  width: 100%;
+  background: rgba(168, 85, 247, 0.08);
+  color: var(--neon-purple);
+  border: 1px dashed rgba(168, 85, 247, 0.35);
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.addQBtn:hover {
+  background: rgba(168, 85, 247, 0.16);
+  border-color: var(--neon-purple);
+}
+
+/* ====================================
+   FOOTER BUTTONS
+   ==================================== */
+.footerBtns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+.saveBtn {
+  background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-blue) 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+  transition: all 0.2s;
+}
+
+.saveBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+}
+
+.cancelBtn {
+  background: var(--bg-main);
+  color: var(--text-muted);
+  border: 1px solid var(--border-soft);
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelBtn:hover {
+  background: var(--border-soft);
+  color: var(--text-main);
+}
+
+/* ====================================
+   EXAM CARDS LIST
+   ==================================== */
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.examCard {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-soft);
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.examCard:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  background: var(--bg-card-strong);
+}
+
+.examInfo h3 {
+  font-size: 1.2rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.examInfo p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin: 0.2rem 0;
+}
+
+.examActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.reportBtn {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.24);
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.reportBtn:hover {
+  background: rgba(16, 185, 129, 0.2);
+}
+
+.deleteBtn {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.24);
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* ====================================
+   IMAGE UPLOAD & PREVIEW STYLES
+   ==================================== */
+.imageUploadBox {
+  margin: 0.5rem 0;
+}
+
+.fileUploadLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(168, 85, 247, 0.08);
+  color: var(--neon-purple);
+  border: 1px dashed rgba(168, 85, 247, 0.3);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fileUploadLabel:hover {
+  background: rgba(168, 85, 247, 0.16);
+  border-color: var(--neon-purple);
+}
+
+.imagePreviewContainer {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.questionImagePreview {
+  max-width: 100%;
+  max-height: 250px;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.removeImgBtn {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(239, 68, 68, 0.85);
+  color: #fff;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s;
+}
+
+.removeImgBtn:hover {
+  background: #ef4444;
+}
+
+/* ====================================
+   BADGES (GRADE & PROVINCE)
+   ==================================== */
+.badgeContainer {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.badge {
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--neon-blue);
+  border: 1px solid rgba(99, 102, 241, 0.24);
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+}

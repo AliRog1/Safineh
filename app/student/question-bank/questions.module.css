@@ -1,0 +1,242 @@
+/* [نینجا]: سیستم جامع استایل‌دهی نئونی و شیشه‌ای (Glassmorphism & Neon Modern) */
+
+.container {
+  /* ==================== پالت پیش‌فرض: لایت مود نئونی (High Contrast) ==================== */
+  --bg-main: #f8fafc;
+  --bg-gradient-1: rgba(99, 102, 241, 0.08);
+  --bg-gradient-2: #f1f5f9;
+  
+  --text-primary: #0f172a;   /* سرمه‌ای بسیار تیره */
+  --text-secondary: #334155; /* سرمه‌ای تیره */
+  --text-label: #64748b;     /* خاکستری خوانا */
+  
+  /* کارت‌های شیشه‌ای لایت */
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(99, 102, 241, 0.12);
+  --inner-box-bg: rgba(99, 102, 241, 0.04);
+  --shadow-main: 0 20px 40px -15px rgba(99, 102, 241, 0.12);
+  
+  /* فیلدها و ورودی‌ها */
+  --input-bg: #ffffff;
+  --input-border: rgba(99, 102, 241, 0.2);
+  
+  /* رنگ‌های نئونی لایت */
+  --accent-color: #4f46e5; 
+  --accent-glow: rgba(79, 70, 229, 0.25);
+  --success-neon: #059669;
+  --success-glow: rgba(5, 150, 105, 0.15);
+  --danger-neon: #dc2626;
+  --danger-glow: rgba(220, 38, 38, 0.15);
+  --warning-neon: #d97706;
+  --warning-glow: rgba(217, 119, 6, 0.15);
+
+  --scrollbar-thumb: rgba(99, 102, 241, 0.3);
+  --secondary-btn-bg: rgba(99, 102, 241, 0.08);
+  --option-row-bg: rgba(255, 255, 255, 0.7);
+
+  /* استایل‌های پایه کانتینر */
+  min-height: 100vh;
+  padding: 40px 24px;
+  direction: rtl;
+  background: var(--bg-main); 
+  background-image: 
+    radial-gradient(at 0% 0%, var(--bg-gradient-1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, var(--bg-gradient-2) 0px, transparent 50%);
+  color: var(--text-primary);
+  font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* [نینجا]: فعال‌سازی حالت دارک نئونی */
+:global([data-theme="dark"]) .container {
+  /* ==================== پالت دارک مود نئونی ==================== */
+  --bg-main: #0b0f19;
+  --bg-gradient-1: rgba(0, 240, 255, 0.08);
+  --bg-gradient-2: #020617;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-label: #94a3b8;
+  
+  /* کارت‌های شیشه‌ای دارک */
+  --card-bg: rgba(15, 23, 42, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --inner-box-bg: rgba(2, 6, 23, 0.5);
+  --shadow-main: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  
+  --input-bg: rgba(2, 6, 23, 0.8);
+  --input-border: rgba(255, 255, 255, 0.1);
+  
+  --accent-color: #00f0ff; 
+  --accent-glow: rgba(0, 240, 255, 0.35);
+  --success-neon: #00ff87;
+  --success-glow: rgba(0, 255, 135, 0.25);
+  --danger-neon: #ff2a5f;
+  --danger-glow: rgba(255, 42, 95, 0.25);
+  --warning-neon: #ffd000;
+  --warning-glow: rgba(255, 208, 0, 0.25);
+
+  --scrollbar-thumb: rgba(0, 240, 255, 0.3);
+  --secondary-btn-bg: rgba(255, 255, 255, 0.05);
+  --option-row-bg: rgba(2, 6, 23, 0.4);
+}
+
+/* ==================== کارت انتخاب حالت (Mode Selector) ==================== */
+.modeContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.modeCard {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid var(--card-border);
+  border-radius: 24px;
+  padding: 35px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-main);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modeCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px -10px var(--accent-glow);
+}
+
+.modeIcon {
+  font-size: 56px;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.modeCard:hover .modeIcon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.modeCard h3 {
+  font-size: 22px;
+  font-weight: 850;
+  margin: 0 0 12px;
+}
+
+.modeCard p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ==================== ساختارهای اصلی صفحه (Cards & Layout) ==================== */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: var(--shadow-main);
+}
+
+.questionItem {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-main);
+  transition: all 0.3s ease;
+}
+
+.questionItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -10px var(--accent-glow);
+}
+
+/* ==================== دکمه‌های نئونی ==================== */
+.primaryBtn, .secondaryBtn, .dangerBtn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 24px;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.primaryBtn {
+  background: linear-gradient(135deg, var(--accent-color) 0%, #4f46e5 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 20px -6px var(--accent-glow);
+}
+
+.primaryBtn:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+  box-shadow: 0 12px 25px -4px var(--accent-glow);
+}
+
+.secondaryBtn {
+  background: var(--secondary-btn-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--card-border);
+}
+
+.secondaryBtn:hover {
+  background: var(--text-primary);
+  color: var(--bg-main);
+}
+
+.dangerBtn {
+  background: var(--danger-glow);
+  color: var(--danger-neon);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.dangerBtn:hover {
+  background: var(--danger-neon);
+  color: #fff;
+  box-shadow: 0 8px 20px -5px var(--danger-glow);
+}
+
+/* ==================== استایل‌های فیلد ورودی و سلکتورها ==================== */
+.field input[type="number"],
+.field select {
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  padding: 10px 16px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.field input[type="number"]:focus,
+.field select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ==================== رسپانسیو و مدیا کوئری‌ها ==================== */
+@media (max-width: 768px) {
+  .modeContainer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .card, .questionItem {
+    padding: 20px;
+  }
+}
